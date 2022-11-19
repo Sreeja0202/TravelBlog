@@ -41,6 +41,9 @@
 .logo {
   cursor: pointer;
 }
+.colorlogo {
+  color: crimson;
+}
 
 .showcase video {
   position: absolute;
