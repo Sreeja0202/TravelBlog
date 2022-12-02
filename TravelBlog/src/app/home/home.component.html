@@ -5,28 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
   </head>
   <body>
-    <section class="sectionOne">
-      <header>
-        <div class="container">
-          <nav>
-            <h2 class="logo">
-              <a routerLink="/landing"
-                ><span class="colorlogo">F</span>REE
-                <span class="colorlogo">B</span>IRD</a
+    <!-- section one starts here -->
+    <section class="sectionOne" id="home">
+      <header class="container">
+        <nav>
+          <p class="logo h2">
+            <a routerLink="/landing"
+              ><span class="colorlogo">F</span>REE
+              <span class="colorlogo">B</span>IRD</a
+            >
+          </p>
+          <ul class="list">
+            <li class="activeLinkHome"><a routerLink="#">Home</a></li>
+            <li><a routerLink="/about">About</a></li>
+            <li><a routerLink="/gallery">Gallery</a></li>
+            <li><a routerLink="/destinations">Destinations</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+            <li>
+              <a routerLink="/login" *ngIf="!this.authservice.IsloggedIn()"
+                >Login</a
               >
-            </h2>
-            <ul class="list">
-              <li><a routerLink="#">Home</a></li>
-              <li><a routerLink="#about">About</a></li>
-              <li><a routerLink="#photos">Photos</a></li>
-              <li><a routerLink="#contact">Contact</a></li>
-              <li><a routerLink="#login">Login</a></li>
-            </ul>
-          </nav>
-        </div>
+            </li>
+            <li>
+              <a
+                routerLink="/login"
+                (click)="logoutUser()"
+                *ngIf="this.authservice.IsloggedIn()"
+                >LogOut</a
+              >
+            </li>
+          </ul>
+        </nav>
       </header>
+      <div class="text">
+        <p class="h2-lg h4">
+          “Travel opens your heart, <br />broadens your mind, <br />and fills
+          your life with stories to tell.”
+        </p>
+      </div>
     </section>
+    <!-- section one ends here -->
+
+    <!-- footer starts here -->
+    <footer class="footer">
+      <section class="ffooter">
+        <p class="h2 logo">
+          <span class="colorlogo">F</span>REE
+          <span class="colorlogo">B</span>IRD
+        </p>
+        <br />
+        <p class="text-light text-center footer_text mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
+          error veniam corporis alias quis earum veritatis, voluptas voluptates
+          accusantium
+        </p>
+        <div class="footer_socials mt-4">
+          <a href="#"><i class="uil uil-facebook-f"></i></a>
+          <a href="#"><i class="uil uil-instagram"></i></a>
+          <a href="#"><i class="uil uil-twitter-alt"></i></a>
+          <a href="#"><i class="uil uil-linkedin-alt"></i></a>
+        </div>
+      </section>
+      <section class="sfooter">
+        <div>
+          <p class="text-light text-center">
+            Copyright @ 2022 Free Bird, designed by Sreeja P M
+          </p>
+        </div>
+      </section>
+    </footer>
+    <!-- footer ends here -->
   </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="showcase">
+      <!-- navbar starts here -->
+      <section class="sectionOne" id="home">
+        <header class="container">
+          <nav>
+            <p class="logo h2">
+              <a routerLink="/landing"
+                ><span class="colorlogo">F</span>REE
+                <span class="colorlogo">B</span>IRD</a
+              >
+            </p>
+            <ul class="list">
+              <li><a routerLink="/home">Home</a></li>
+              <li><a routerLink="/login" (click)="onClickLogin()">Login</a></li>
+            </ul>
+          </nav>
+        </header>
+      </section>
+      <!-- navbar ends here -->
+      <!-- 
+      <video src="../../assets/videos/video.mp4" muted autoplay loop></video>
+
+      <div class="overlay"></div> -->
+
+      <!-- form starts here -->
+      <div class="outer">
+        <div class="container">
+          <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+              <div class="panel border">
+                <div class="panel-heading">
+                  <h3 class="pt-3 font-weight-bold text-light">
+                    <b>SIGN UP</b>
+                  </h3>
+                </div>
+                <div class="panel-body p-3 mb-5">
+                  <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="form-group pt-3">
+                      <label for="ufname" class="text-light">First Name</label>
+                      <div class="input-field">
+                        <span class="fa fa-user p-2"></span>
+                        <input
+                          type="text"
+                          placeholder="First Name"
+                          class="form-control"
+                          formControlName="ufname"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group pt-3">
+                      <label for="ulname" class="text-light">Last Name</label>
+                      <div class="input-field">
+                        <span class="fa fa-user p-2"></span>
+                        <input
+                          type="text"
+                          placeholder="Last Name"
+                          class="form-control"
+                          formControlName="ulname"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group pt-3">
+                      <label for="umobile" class="text-light"
+                        >Mobile Number</label
+                      >
+                      <div class="input-field">
+                        <span class="fa fa-user p-2"></span>
+                        <input
+                          type="number"
+                          placeholder="Mobile Number"
+                          class="form-control"
+                          formControlName="umobile"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group pt-3">
+                      <label for="uemail" class="text-light">Email</label>
+                      <div class="input-field">
+                        <span class="fa fa-envelope p-2"></span>
+                        <input
+                          type="email"
+                          placeholder="Email"
+                          class="form-control"
+                          formControlName="uemail"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group pt-3">
+                      <label for="upassword" class="text-light">Password</label>
+                      <div class="input-field">
+                        <!-- for seeing the password - got error - later check -->
+                        <!-- <span class="fa fa-lock p-2"></span>
+                  <input [type]="type" placeholder="Password" /> -->
+                        <!-- <span class="{{ eyeIcon }}" (click)="hideShowpass()"></span> -->
+                        <span class="fa fa-lock p-2"></span>
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          class="form-control"
+                          formControlName="upassword"
+                        />
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn btn-primary w-100 btn btn-block mt-4"
+                    >
+                      SUBMIT
+                    </button>
+                    <div class="text-center pt-4 text-muted" id="forget">
+                      Already have an Account?
+                      <a id="forget" routerLink="/login">Login</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- form ends -->
+    </section>
+    <!-- footer starts here  -->
+    <footer class="footer">
+      <section class="ffooter">
+        <p class="h2 logo">
+          <span class="colorlogo">F</span>REE
+          <span class="colorlogo">B</span>IRD
+        </p>
+        <br />
+        <p class="text-light text-center footer_text mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
+          error veniam corporis alias quis earum veritatis, voluptas voluptates
+          accusantium
+        </p>
+        <div class="footer_socials mt-4">
+          <a href="#"><i class="uil uil-facebook-f"></i></a>
+          <a href="#"><i class="uil uil-instagram"></i></a>
+          <a href="#"><i class="uil uil-twitter-alt"></i></a>
+          <a href="#"><i class="uil uil-linkedin-alt"></i></a>
+        </div>
+      </section>
+      <section class="sfooter">
+        <div>
+          <p class="text-light text-center">
+            Copyright @ 2022 Free Bird, designed by Sreeja P M
+          </p>
+        </div>
+      </section>
+    </footer>
+    <!-- footer ends here -->
+  </body>
+</html>
