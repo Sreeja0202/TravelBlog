@@ -1,0 +1,106 @@
+<!-- navbar starts here -->
+<section class="sectionOne" id="home">
+  <header class="container">
+    <nav>
+      <p class="logo h2">
+        <a routerLink="/landing"
+          ><span class="colorlogo">F</span>REE
+          <span class="colorlogo">B</span>IRD</a
+        >
+      </p>
+      <ul class="list">
+        <li><a routerLink="#" class="ActiveLinks_color">Users</a></li>
+        <li><a routerLink="/home">Back</a></li>
+        <li><a routerLink="/login" (click)="logoutUser()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+</section>
+<!-- navbar ends here -->
+
+<!-- table begins here -->
+<section class="container row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Registration Date</th>
+        <th scope="col">Role</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users" class="datapointer text-center">
+        <td>{{ item.ufname }}</td>
+        <td>{{ item.uemail }}</td>
+        <td>{{ item.uDate | date : "dd MMM yyyy" }}</td>
+        <td>{{ item.urole }}</td>
+        <td><i class="uil uil-pen" (click)="onEditUser(item)"></i></td>
+        <td>
+          <i class="uil uil-trash-alt" (click)="onDeleteUser(item._id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<!-- table ends here -->
+
+<!-- modal form for edit user starts here -->
+<div class="modal fade show" [class.show]="showUsersModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update User</h5>
+        <button
+          (click)="onCloseUsersModal()"
+          class="close p-2"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="usersForm" (ngSubmit)="onUserSubmit()">
+        <div class="modal-body">
+          <div class="form-group mt-3">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" formControlName="ufname" />
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" formControlName="ulname" />
+          </div>
+          <div class="form-group">
+            <label for="umobile">Mobile Number</label>
+            <input type="text" class="form-control" formControlName="umobile" />
+          </div>
+          <div class="form-group">
+            <label for="uemail">Email</label>
+            <input type="text" class="form-control" formControlName="uemail" />
+          </div>
+          <div class="form-group">
+            <label for="urole">Role</label>
+            <input type="text" class="form-control" formControlName="urole" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onCloseUsersModal()"
+            class="btn btn-success mt-5 p-2"
+            data-dismiss="modal"
+          >
+            Close</button
+          >&nbsp;&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary mt-5 p-2">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- modal for edit user ends here -->

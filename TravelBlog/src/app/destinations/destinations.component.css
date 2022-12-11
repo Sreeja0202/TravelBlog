@@ -168,7 +168,7 @@ nav {
 
 .card-btn {
   color: #1f3d47;
-  background: #8fabba;
+  background: red;
   padding: 10px 20px;
   border-radius: 5px;
   text-transform: capitalize;
@@ -177,6 +177,11 @@ nav {
   font-weight: 500;
   cursor: pointer;
   width: 180px;
+}
+
+.card-btn:hover {
+  background-color: crimson;
+  letter-spacing: 2px;
 }
 
 /* footer starts here */

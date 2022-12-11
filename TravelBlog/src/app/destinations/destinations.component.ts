@@ -11,7 +11,25 @@ export class DestinationsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onClickDesert() {
+    this.router.navigate(['/deserts']);
+  }
+
   logoutUser() {
     this.router.navigate(['/landing']);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userData');
+  }
+
+  onClickValleys() {
+    this.router.navigate(['/valleys']);
+  }
+
+  onClickMountains() {
+    this.router.navigate(['/mountains']);
+  }
+
+  onClickSeas() {
+    this.router.navigate(['/seas']);
   }
 }

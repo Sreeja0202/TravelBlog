@@ -17,6 +17,7 @@
   <body>
     <!-- section one starts here -->
     <section class="sectionOne" id="home">
+      <div class="overlay"></div>
       <header class="container">
         <nav>
           <p class="logo h2">
@@ -28,8 +29,24 @@
           <ul class="list">
             <li class="activeLinkHome"><a routerLink="#">Home</a></li>
             <li><a routerLink="/about">About</a></li>
-            <li><a routerLink="/gallery">Gallery</a></li>
-            <li><a routerLink="/destinations">Destinations</a></li>
+            <li>
+              <a
+                routerLink="/users"
+                *ngIf="
+                  this.authservice.userData.email === 'admin@gmail.com' &&
+                  this.authservice.userData.role === 'admin' &&
+                  this.authservice.IsloggedIn()
+                "
+                >Users</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/destinations"
+                *ngIf="this.authservice.IsloggedIn()"
+                >Destinations</a
+              >
+            </li>
             <li><a routerLink="/contact">Contact</a></li>
             <li>
               <a routerLink="/login" *ngIf="!this.authservice.IsloggedIn()"
@@ -38,7 +55,7 @@
             </li>
             <li>
               <a
-                routerLink="/login"
+                routerLink="#"
                 (click)="logoutUser()"
                 *ngIf="this.authservice.IsloggedIn()"
                 >LogOut</a

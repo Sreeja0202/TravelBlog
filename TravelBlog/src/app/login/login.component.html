@@ -25,6 +25,7 @@ error message for each field if it is invalid
             >
           </p>
           <ul class="list">
+            <li><a routerLink="#" class="ActiveLinks_color">Login</a></li>
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/login" (click)="onClickSignup()">SignUp</a></li>
           </ul>
@@ -35,13 +36,14 @@ error message for each field if it is invalid
     <!-- form starts -->
 
     <div class="outer">
-      <video src="../../../src/assets/videos/signup.mp4"></video>
       <div class="container">
         <div class="row">
           <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-            <div class="panel border bg-white">
+            <div class="panel border bg-dark">
               <div class="panel-heading">
-                <h3 class="pt-3 font-weight-bold"><b>LOGIN</b></h3>
+                <h3 class="pt-3 font-weight-bold text-light mt-3">
+                  <b>LOGIN</b>
+                </h3>
               </div>
               <div class="panel-body p-3">
                 <form [formGroup]="loginForm" (ngSubmit)="logIn()">
@@ -57,6 +59,14 @@ error message for each field if it is invalid
                       />
                     </div>
                   </div>
+                  <small
+                    *ngIf="
+                      loginForm.controls['uemail'].dirty &&
+                      loginForm.hasError('required', 'uemail')
+                    "
+                    class="text-danger"
+                    >Email is required</small
+                  >
                   <div class="form-group pt-3">
                     <label for="upassword">Enter your Password</label>
                     <div class="input-field">
@@ -69,10 +79,19 @@ error message for each field if it is invalid
                       />
                     </div>
                   </div>
+                  <small
+                    *ngIf="
+                      loginForm.controls['upassword'].dirty &&
+                      loginForm.hasError('required', 'upassword')
+                    "
+                    class="text-danger"
+                    >Password is required</small
+                  >
                   <div class="form-inline fr mt-4">
                     <a id="forget" class="font-weight-bold">Forget Password?</a>
                   </div>
                   <button
+                    [disabled]="loginForm.invalid"
                     type="submit"
                     class="btn btn-primary w-100 btn btn-block mt-4"
                   >

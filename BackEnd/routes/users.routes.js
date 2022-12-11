@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const oid = require("mongoose").Types.ObjectId;
+const objectId = require("mongoose").Types.ObjectId;
 const urouter = express.Router();
 const User = require("../models/users.models.js");
 
@@ -22,6 +22,8 @@ urouter.post("/", (req, res) => {
     umobile: req.body.umobile,
     uemail: req.body.uemail,
     upassword: hash,
+    uDate: req.body.uDate,
+    urole: req.body.urole,
   });
 
   user.save((err, doc) => {
@@ -57,6 +59,7 @@ urouter.post("/login", (req, res) => {
             lastName: user.ulname,
             mobileNumber: user.umobile,
             email: user.uemail,
+            role: user.urole,
           };
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });
@@ -64,6 +67,66 @@ urouter.post("/login", (req, res) => {
       }
     }
   );
+});
+
+// get
+urouter.get("/", (req, res) => {
+  User.find((err, doc) => {
+    if (err) {
+      console.log("Error in getting data", +err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
+// update
+urouter.put("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    let user = {
+      ufname: req.body.ufname,
+      ulname: req.body.ulname,
+      umobile: req.body.umobile,
+      uemail: req.body.uemail,
+      upassword: req.body.upassword,
+      uDate: req.body.uDate,
+      urole: req.body.urole,
+    };
+    User.findByIdAndUpdate(
+      req.params.id,
+      { $set: user },
+      { new: true },
+      (err, doc) => {
+        if (err) {
+          console.log("Error in updating data", +err);
+        } else {
+          res.send(doc);
+        }
+      }
+    );
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with User with id ${req.params.id}`);
+  }
+});
+
+// DELETE by id/salary/name
+
+urouter.delete("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    User.findByIdAndRemove(req.params.id, (err, doc) => {
+      if (err) {
+        console.log("Error in Deleting data by id", +err);
+      } else {
+        res.send(doc);
+      }
+    });
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with User with id ${req.params.id}`);
+  }
 });
 
 module.exports = urouter;

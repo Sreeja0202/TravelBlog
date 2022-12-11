@@ -30,6 +30,10 @@ nav {
   font-weight: bold;
 }
 
+.ActiveLinks_color {
+  color: crimson !important;
+}
+
 .colorlogo {
   color: crimson;
 }
@@ -71,8 +75,7 @@ nav {
 /* navbar */
 
 .outer {
-  height: 100vh;
-  background: url("../../assets/images/signup.jpg");
+  height: 120vh;
   background-position: center;
   background-size: cover;
 }
@@ -160,7 +163,7 @@ input[type="number"] {
   content: "or connect with";
   position: absolute;
   top: -13px;
-  left: 37%;
+  left: 36%;
   background-color: white;
   padding: 0 8px;
 }

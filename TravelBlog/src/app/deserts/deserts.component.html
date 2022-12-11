@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deserts</title>
+  </head>
+  <body>
+    <!-- navbar starts here -->
+    <section class="sectionOne" id="home">
+      <header class="container">
+        <nav>
+          <p class="logo h2">
+            <a routerLink="/landing"
+              ><span class="colorlogo">F</span>REE
+              <span class="colorlogo">B</span>IRD</a
+            >
+          </p>
+          <ul class="list">
+            <li class="activeLinkDest"><a routerLink="#">Deserts</a></li>
+            <li><a routerLink="/destinations">Back</a></li>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/login" (click)="logoutUser()">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+    <!-- navbar ends here -->
+    <!-- section 2 desert content starts here -->
+    <section class="sectionTwo" id="sectionTwo">
+      <div class="text-div">
+        <h1>Deserts</h1>
+        <p class="text-justify">
+          A desert is a barren area of landscape where little precipitation
+          occurs and, consequently, living conditions are hostile for plant and
+          animal life. Deserts can be classified by the amount of precipitation
+          that falls, by the temperature that prevails, by the causes of
+          desertification or by their geographical location. One of the driest
+          places on Earth is the Atacama Desert. It is virtually devoid of life
+          because it is blocked from receiving precipitation by the Andes
+          mountains to the east and the Chilean Coast Range to the west.When
+          rain falls in deserts, as it occasionally does, it is often with great
+          violence. The desert surface is evidence of this with dry stream
+          channels known as arroyos or wadis meandering across its surface.
+          These can experience flash floods, becoming raging torrents with
+          surprising rapidity after a storm that may be many kilometers away.
+          Most deserts are in basins with no drainage to the sea but some are
+          crossed by exotic rivers sourced in mountain ranges or other high
+          rainfall areas beyond their borders.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Desert" target="_blank">
+          <button class="btn btn-success text-center text-light p-2 mt-3">
+            Read More...
+          </button>
+        </a>
+      </div>
+
+      <!-- carousel starts -->
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://images.unsplash.com/photo-1559586616-361e18714958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2FoYXJhJTIwZGVzZXJ0fGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://www.worldatlas.com/r/w1200/upload/05/71/c2/shutterstock-713084413.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://lp-cms-production.imgix.net/features/2013/04/sahara-desert-camel-caravan-e6208b512077.jpg?auto=compress&fit=crop&fm=auto&q=50&w=1000&h=800"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- section 2 desert content ends here -->
+
+    <!-- section 3 desert posts starts here -->
+    <section class="sectionThree" id="posts">
+      <div class="relatedPosts">
+        <div>
+          <a routerLink="#"><p>Related Posts</p></a>
+        </div>
+        <div>
+          <p (click)="onAddPosts()">Add Posts</p>
+        </div>
+      </div>
+    </section>
+    <!-- section 2 desert posts ends here -->
+
+    <!-- modal form for add posts starts here -->
+    <div class="modal fade show" [class.show]="showPostsModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              {{ editPostsMode ? "Update Posts" : "Add Posts" }}
+            </h5>
+            <button
+              (click)="onClosePostsModal()"
+              class="close p-2"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="postsForm" (ngSubmit)="onPostSubmit()">
+            <div class="modal-body">
+              <div class="form-group mt-3">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="location"
+                />
+              </div>
+              <br />
+
+              <div class="form-group mt-3">
+                <label for="desc">Description</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="desc"
+                />
+              </div>
+              <br />
+
+              <!-- /////////// -->
+              <!-- <div class="form-group">
+                <label for="image">Image </label>
+                <input
+                  type="file"
+                  formControlName="imagePath"
+                  #selectInput
+                  (change)="selectImage($event)"
+                />
+              </div>
+              <br /> -->
+              <!-- ////////////////////////////// -->
+              <div class="form-group">
+                <label for="geoMap">Map Location URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="geoMap"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="photourl">Photos Url </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="photourl"
+                />
+              </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onClosePostsModal()"
+                class="btn btn-success mt-5 p-2"
+                data-dismiss="modal"
+              >
+                Close</button
+              >&nbsp;&nbsp;&nbsp;
+              <button type="submit" class="btn btn-primary mt-5 p-2">
+                {{ editPostsMode ? "Update Post" : "Add Post" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal for add posts ends here -->
+
+    <!-- card for post starts here -->
+    <div class="row container">
+      <div class="col-md-4" *ngFor="let item of posts">
+        <!-- where item just a variable to hold employee details and employees is the main array -->
+        <div class="card mb-3">
+          <div class="card-body p-2">
+            <h6 class="card-title bg-warning text-light p-1">
+              {{ item.location }}
+            </h6>
+            <hr />
+            <h6 class="card-subtitle mb-2 text-justify mt-3">
+              {{ item.desc }}"
+            </h6>
+            <h6 class="card-subtitle mb-2"><b>Map:</b> {{ item.geoMap }}</h6>
+            <h6 class="card-subtitle mb-2">
+              <b>Photos:</b> {{ item.photourl }}
+            </h6>
+            <h6 class="card-subtitle mb-3">
+              <b>Posted by: </b>{{ item.pemail }}
+            </h6>
+            <hr
+              *ngIf="
+                this.authservice.userData.email === item.pemail ||
+                this.authservice.userData.email === 'admin@gmail.com'
+              "
+            />
+            <div class="d-flex justify-content-end">
+              <button
+                *ngIf="
+                  this.authservice.userData.email === item.pemail ||
+                  this.authservice.userData.email === 'admin@gmail.com'
+                "
+                type="button"
+                class="btn btn-sm btn-primary p-1 mt-3 mx-2"
+                (click)="onEditPosts(item)"
+              >
+                Edit
+              </button>
+              <button
+                *ngIf="
+                  this.authservice.userData.email === item.pemail ||
+                  this.authservice.userData.email === 'admin@gmail.com'
+                "
+                type="button"
+                class="btn btn-sm btn-danger mt-3 p-1 mx-2"
+                (click)="onDeletePosts(item._id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- card for posts ends here -->
+
+    <!-- footer starts here -->
+    <footer class="footer">
+      <section class="ffooter">
+        <p class="h2 logo">
+          <span class="colorlogo">F</span>REE
+          <span class="colorlogo">B</span>IRD
+        </p>
+        <br />
+        <p class="text-light text-center footer_text mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
+          error veniam corporis alias quis earum veritatis, voluptas voluptates
+          accusantium
+        </p>
+        <div class="footer_socials mt-4">
+          <a href="#"><i class="uil uil-facebook-f"></i></a>
+          <a href="#"><i class="uil uil-instagram"></i></a>
+          <a href="#"><i class="uil uil-twitter-alt"></i></a>
+          <a href="#"><i class="uil uil-linkedin-alt"></i></a>
+        </div>
+      </section>
+      <section class="sfooter">
+        <div>
+          <p class="text-light text-center">
+            Copyright @ 2022 Free Bird, designed by Sreeja P M
+          </p>
+        </div>
+      </section>
+    </footer>
+    <!-- footer ends here -->
+  </body>
+</html>

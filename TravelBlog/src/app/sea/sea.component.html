@@ -1,1 +1,281 @@
-<p>sea works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deserts</title>
+  </head>
+  <body>
+    <!-- navbar starts here -->
+    <section class="sectionOne" id="home">
+      <header class="container">
+        <nav>
+          <p class="logo h2">
+            <a routerLink="/landing"
+              ><span class="colorlogo">F</span>REE
+              <span class="colorlogo">B</span>IRD</a
+            >
+          </p>
+          <ul class="list">
+            <li class="activeLinkDest"><a routerLink="#">Sea</a></li>
+            <li><a routerLink="/destinations">Back</a></li>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/login" (click)="logoutUser()">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+    <!-- navbar ends here -->
+    <!-- section 2 desert content starts here -->
+    <section class="sectionTwo" id="sectionTwo">
+      <div class="text-div">
+        <h1>Oceans</h1>
+        <p class="text-justify">
+          An ocean is a large area of water between continents. Oceans are very
+          big and they join smaller seas together. Oceans (or marine biomes)
+          cover 72% of Earth. There are five main oceans: the Pacific Ocean, the
+          Atlantic Ocean, the Indian Ocean, the Southern Ocean, and the Arctic
+          Ocean. The largest ocean is the Pacific Ocean. The smallest ocean is
+          the Arctic Ocean. Many types of animals live in oceans, such as carp,
+          crabs, starfish, sharks, and whales. Different water movements
+          separate the Southern Ocean from the Atlantic, Pacific and Indian
+          Oceans. The Southern Ocean is also called the Antarctic Ocean, because
+          it covers the area around Antarctica. The deepest ocean is the Pacific
+          Ocean. The deep ocean is characterized by cold temperatures, high
+          pressure, and complete darkness. Some very unusual organisms live in
+          this part of the ocean. They do not require energy from the sun to
+          survive, because they use chemicals from deep inside the Earth.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Valley" target="_blank">
+          <button class="btn btn-success text-center text-light p-2 mt-3">
+            Read More...
+          </button>
+        </a>
+      </div>
+
+      <!-- carousel starts -->
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?cs=srgb&dl=pexels-fabian-wiktor-994605.jpg&fm=jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://w0.peakpx.com/wallpaper/140/577/HD-wallpaper-mountain-landscape-sunset-mountain-lake-golden-sunset-forest-glacier-national-park-montana-usa.jpghttps://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?cs=srgb&dl=pexels-pixabay-210205.jpg&fm=jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://images.pexels.com/photos/315987/pexels-photo-315987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- section 2 desert content ends here -->
+
+    <!-- section 3 desert posts starts here -->
+    <section class="sectionThree" id="posts">
+      <div class="relatedPosts">
+        <div>
+          <a routerLink="#"><p>Related Posts</p></a>
+        </div>
+        <div>
+          <p (click)="onAddPosts()">Add Posts</p>
+        </div>
+      </div>
+    </section>
+    <!-- section 2 desert posts ends here -->
+
+    <!-- modal form for add posts starts here -->
+    <div class="modal fade show" [class.show]="showPostsModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              {{ editPostsMode ? "Update Posts" : "Add Posts" }}
+            </h5>
+            <button
+              (click)="onClosePostsModal()"
+              class="close p-2"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="postsForm" (ngSubmit)="onPostSubmit()">
+            <div class="modal-body">
+              <div class="form-group mt-3">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="location"
+                />
+              </div>
+              <br />
+
+              <div class="form-group mt-3">
+                <label for="desc">Description</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="desc"
+                />
+              </div>
+              <br />
+
+              <!-- /////////// -->
+              <!-- <div class="form-group">
+                <label for="image">Image </label>
+                <input
+                  type="file"
+                  formControlName="imagePath"
+                  #selectInput
+                  (change)="selectImage($event)"
+                />
+              </div>
+              <br /> -->
+              <!-- ////////////////////////////// -->
+              <div class="form-group">
+                <label for="geoMap">Map Location URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="geoMap"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="photourl">Photos Url </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="photourl"
+                />
+              </div>
+            </div>
+            <br />
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onClosePostsModal()"
+                class="btn btn-success mt-5 p-2"
+                data-dismiss="modal"
+              >
+                Close</button
+              >&nbsp;&nbsp;&nbsp;
+              <button type="submit" class="btn btn-primary mt-5 p-2">
+                {{ editPostsMode ? "Update Post" : "Add Post" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal for add posts ends here -->
+
+    <!-- card for post starts here -->
+    <div class="row container">
+      <div class="col-md-4" *ngFor="let item of posts">
+        <!-- where item just a variable to hold employee details and employees is the main array -->
+        <div class="card mb-3">
+          <div class="card-body p-2">
+            <h6 class="card-title bg-warning text-light p-1">
+              {{ item.location }}
+            </h6>
+            <hr />
+            <h6 class="card-subtitle mb-2 text-justify mt-3">
+              {{ item.desc }}"
+            </h6>
+            <h6 class="card-subtitle mb-2"><b>Map:</b> {{ item.geoMap }}</h6>
+            <h6 class="card-subtitle mb-2">
+              <b>Photos:</b> {{ item.photourl }}
+            </h6>
+            <h6 class="card-subtitle mb-3">
+              <b>Posted by: </b>{{ item.pemail }}
+            </h6>
+            <hr
+              *ngIf="
+                this.authservice.userData.email === item.pemail ||
+                this.authservice.userData.email === 'admin@gmail.com'
+              "
+            />
+            <div class="d-flex justify-content-end">
+              <button
+                *ngIf="
+                  this.authservice.userData.email === item.pemail ||
+                  this.authservice.userData.email === 'admin@gmail.com'
+                "
+                type="button"
+                class="btn btn-sm btn-primary p-1 mt-3 mx-2"
+                (click)="onEditPosts(item)"
+              >
+                Edit
+              </button>
+              <button
+                *ngIf="
+                  this.authservice.userData.email === item.pemail ||
+                  this.authservice.userData.email === 'admin@gmail.com'
+                "
+                type="button"
+                class="btn btn-sm btn-danger mt-3 p-1 mx-2"
+                (click)="onDeletePosts(item._id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- card for posts ends here -->
+
+    <!-- footer starts here -->
+    <footer class="footer">
+      <section class="ffooter">
+        <p class="h2 logo">
+          <span class="colorlogo">F</span>REE
+          <span class="colorlogo">B</span>IRD
+        </p>
+        <br />
+        <p class="text-light text-center footer_text mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
+          error veniam corporis alias quis earum veritatis, voluptas voluptates
+          accusantium
+        </p>
+        <div class="footer_socials mt-4">
+          <a href="#"><i class="uil uil-facebook-f"></i></a>
+          <a href="#"><i class="uil uil-instagram"></i></a>
+          <a href="#"><i class="uil uil-twitter-alt"></i></a>
+          <a href="#"><i class="uil uil-linkedin-alt"></i></a>
+        </div>
+      </section>
+      <section class="sfooter">
+        <div>
+          <p class="text-light text-center">
+            Copyright @ 2022 Free Bird, designed by Sreeja P M
+          </p>
+        </div>
+      </section>
+    </footer>
+    <!-- footer ends here -->
+  </body>
+</html>

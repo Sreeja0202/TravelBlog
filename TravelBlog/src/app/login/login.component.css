@@ -40,6 +40,10 @@ nav {
   list-style: none;
 }
 
+.ActiveLinks_color {
+  color: crimson !important;
+}
+
 .list li a {
   margin-left: 2rem;
   text-decoration: none;
@@ -72,6 +76,7 @@ nav {
 
 .outer {
   height: 100vh;
+  /* background: url(""); */
 }
 
 .panel-heading {
@@ -156,7 +161,7 @@ input[type="password"] {
   content: "or connect with";
   position: absolute;
   top: -13px;
-  left: 37%;
+  left: 30%;
   background-color: white;
   padding: 0 8px;
 }
