@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { DesertsComponent } from './deserts/deserts.component';
 import { DestinationsComponent } from './destinations/destinations.component';
 import { HomeComponent } from './home/home.component';
@@ -36,22 +37,27 @@ const routes: Routes = [
   {
     path: 'deserts',
     component: DesertsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'destinations',
     component: DestinationsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'moutains',
     component: MountainsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'seas',
     component: SeaComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'valleys',
     component: ValleysComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
